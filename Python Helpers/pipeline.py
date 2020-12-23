@@ -1,14 +1,16 @@
 from filefetcher import get_commodities
 from hdbpipeline import fetch_forecast
 from sqlinsertgenerator import generate_inserts
-from plotter import plot_all
+from plotter import clean_preds, plot_all
+from errorlogger import mse_scores, assign_scores, update_scores, write_score_csv
 
 commodities = get_commodities("../Datasheets/ByCategory/")
-algorithms = ["arima", "brown", "brownad", "croston", "linreg", "singlesmooth", "doublesmooth", "triplesmooth"]
+algorithms = ["arima", "autoarima", "brown", "brownad", "croston", "linreg", "singlesmooth", "doublesmooth", "triplesmooth"]
 forecastlength = 6
 
 plotrun = input('Jump to where you left off? ("yes" to activate): ')
 
+scores = {"arima": 0, "autoarima": 0, "brown": 0, "brownad": 0, "croston": 0, "linreg": 0, "singlesmooth": 0, "doublesmooth": 0, "triplesmooth": 0}
 for commodity in commodities:
     y_preds = {}
     generated = True
@@ -24,4 +26,9 @@ for commodity in commodities:
         else:
             y_preds[algorithm] = fetch_forecast(insertfile, dbpipefile, forecastlength)
     if generated:
-        plot_all(commodity, y_preds, algorithms, begins = -1)
+        y_dict = clean_preds(commodity, y_preds)
+        plot_all(commodity, y_dict, begins = -1)
+        mse = mse_scores(commodity, y_dict)
+        scored_alg = assign_scores(mse)
+        [scores, single_score] = update_scores(scored_alg, scores)
+        write_score_csv(commodity, single_score)

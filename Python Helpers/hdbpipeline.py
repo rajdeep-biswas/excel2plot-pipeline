@@ -46,6 +46,7 @@ def fetch_forecast(insertqueries, allqueries, forecastlength, plotrun = False):
     print("Executing SQL for " +  allqueries)
         
     for line in allcommands.split("\n"):
+        print(end=".")
         try:
             cursor.execute(line)
         except Error:
@@ -54,6 +55,7 @@ def fetch_forecast(insertqueries, allqueries, forecastlength, plotrun = False):
             continue
         conn.commit()
 
+    print()
     y_pred = []
     rows = cursor.fetchall()
     for row in rows:

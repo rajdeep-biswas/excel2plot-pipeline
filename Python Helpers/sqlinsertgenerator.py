@@ -2,6 +2,7 @@ def generate_inserts(commodity, algorithm, forecastlength):
 
     tablenames = {
         "arima": "PAL_ARIMA_DATA_TBL",
+        "autoarima": "PAL_ARIMA_DATA_TBL",
         "brown": "PAL_BROWNSMOOTH_DATA_TBL",
         "brownad": "PAL_BROWNSMOOTH_DATA_TBL",
         "croston": "PAL_CROSTON_DATA_TBL",
