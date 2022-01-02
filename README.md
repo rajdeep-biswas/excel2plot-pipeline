@@ -12,7 +12,7 @@ Also, if the pipeline run gets interrupted due to any reason, I wrote a feature 
 
 ![alt text][Example of a plot]
 
-[Example of a plot]: SavedPlots/Figure_1_New.png "Sample image of what a comparison plot looks like."
+[Example of a plot]: Saved_Plots/Figure_1_New.png "Sample image of what a comparison plot looks like."
 
 ### Great, but how do I run the code?
 
