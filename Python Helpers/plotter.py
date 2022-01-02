@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
+"""
+The code that generates the multilabelled plot for each commodity that lets us visually inspect the accuracy of each algorithm.
+"""
+
 def clean_preds(commodity, y_preds):
     with open("../Datasheets/ByCategory/" + commodity + ".txt", 'r') as file:
         for line in file:

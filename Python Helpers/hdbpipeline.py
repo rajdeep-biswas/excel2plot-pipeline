@@ -1,6 +1,12 @@
 from hdbcli import dbapi
 from hdbcli.dbapi import Error
 
+"""
+Connects to a remote HANA Db Runtime in order to use the PAL library, execute the stored procedures from the SQL files, 
+get the forecast results from each algorithm, and finally save the results into files for future referral.
+(This step requires access to the company VPN).
+"""
+
 def fetch_forecast(insertqueries, allqueries, forecastlength, plotrun = False):
     
     try:

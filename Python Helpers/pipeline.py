@@ -4,6 +4,11 @@ from sqlinsertgenerator import generate_inserts
 from plotter import clean_preds, plot_all
 from errorlogger import mse_scores, assign_scores, update_scores, write_score_csv
 
+"""
+This is the main driver file that runs the pipeline start to finish.
+Possesses the capability to resume tasks from where it was left off in case of interruption(s).
+"""
+
 commodities = get_commodities("../Datasheets/ByCategory/")
 algorithms = ["arima", "autoarima", "brown", "brownad", "croston", "linreg", "singlesmooth", "doublesmooth", "triplesmooth"]
 forecastlength = 6

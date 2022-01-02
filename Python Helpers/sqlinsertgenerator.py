@@ -1,5 +1,14 @@
 def generate_inserts(commodity, algorithm, forecastlength):
 
+    """
+    Params:
+        commodity: the unique identifier for the commodity.
+        algorithm: string identifier for which forecasting algorithm to use.
+        forecastlength: the time window over which to forecast the results.
+    Generates an .sql file solely for the INSERT queries of each individual commodity over each individual algorithm.
+    """
+
+    # Dictionary for holding the DB Table Identifier Strings
     tablenames = {
         "arima": "PAL_ARIMA_DATA_TBL",
         "autoarima": "PAL_ARIMA_DATA_TBL",
