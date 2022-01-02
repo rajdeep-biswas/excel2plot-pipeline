@@ -19,4 +19,13 @@ Also, if the pipeline run gets interrupted due to any reason, I wrote a feature 
 1. Obtain your `svcategory-nocomma.xlsx` or equivalent.  
 Relevant columns would be `UNSPSC.AribaCategoryIdL3` (Commodity ID), `AccountingDate.Month1970` (Month Timestamp), `sum(Amount)` (Amount Spent).  
 2. Run `excelcolumntolist.py` (this is for preprocessing).
-3. Run `pipeline.py`.
+3. Run `pipeline.py`.  
+
+### Project structure (in order of importance).
+`Python_Helpers/` is the main directory that contains the driver python code including other helper files.  
+`MSE_Log/` contains the CSV that records the scores of each algorithm over each commodity.  
+`SQL_Files/` contain stored procedure files with placeholders in them.  
+`Saved_Plots/` contain matplotlib exports.  
+`PAL_Output_Sheets/` contains excel exports of forecasts of each commodity for manual inspsection.  
+`Python_Helpers/Test_Files/` contain older files that were written during development, are not in current use, but still document some progressive (albeit deprecated) functionality.  
+`SQL_Files/Prefinal/` contain older developmental test .sql files not currently in use.  
